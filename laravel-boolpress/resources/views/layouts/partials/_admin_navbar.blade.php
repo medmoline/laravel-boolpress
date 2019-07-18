@@ -14,6 +14,13 @@
                   <li class="nav-item">
                     <a class="nav-link" href="{{route('home')}}">Home</a>
                   </li>
+                  @auth
+                    <li class="nav-item">
+                      <a class="nav-link" href="{{route('admin.posts.index')}}">
+                        Gestione Posts
+                      </a>
+                    </li>
+                  @endauth
                 </ul>
 
                 <!-- Right Side Of Navbar -->

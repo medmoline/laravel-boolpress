@@ -13,20 +13,20 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{route('home')}}">
+            <a class="nav-link" href="#">
               Chi Siamo
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{route('home')}}">
+            <a class="nav-link" href="#">
               Contatti
             </a>
           </li>
-          <li class="nav-item">
+          {{-- <li class="nav-item">
             <a class="nav-link" href="{{route('admin.home')}}">
               Admin
             </a>
-          </li>
+          </li> --}}
         </ul>
       </div>
     </div>
