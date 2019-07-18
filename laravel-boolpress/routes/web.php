@@ -11,8 +11,8 @@
 |
 */
 
-Route::get('/', 'HomeController@index');
-
+Route::get('/', 'HomeController@index')->name('home');
+Route::get('/post/{slug}', 'PostController@show')->name('posts.show');
 Auth::routes();
 
 //gruppo per gestire le rotte riservate all'admin -> prefix per l'url (admin) , namespace per la cartella del controller(Admin) , name per impostare il nome della rotta con admin.

@@ -20,8 +20,8 @@ class PostsTableSeeder extends Seeder
         for ($i=0; $i < 20 ; $i++) {
           $new_post = new Post();
           $new_post->title = $faker->sentence();
-          $new_post->content = $faker->text(200);
-          $new_post->author = $faker->name;
+          $new_post->content = $faker->text(3000);
+          $new_post->author = $faker->firstName . ' ' . $faker->lastName;
           $new_post->slug = Str::slug($new_post->title);
           $new_post->save();
         }
