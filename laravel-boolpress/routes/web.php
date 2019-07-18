@@ -11,10 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', function(){
+  return view('welcome');
 });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//gruppo per gestire le rotte riservate all'admin -> prefix per l'url (admin) , namespace per la cartella del controller(Admin) , name per impostare il nome della rotta con admin.
+Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin.')->group(function(){
+  Route::get('/', 'HomeController@index')->name('home');
+  Route::resource('/posts', 'PostController');
+});
