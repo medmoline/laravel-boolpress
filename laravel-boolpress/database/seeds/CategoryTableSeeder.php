@@ -2,7 +2,8 @@
 
 use Illuminate\Database\Seeder;
 use App\Category;
-
+use App\Post;
+use Illuminate\Support\Str;
 class CategoryTableSeeder extends Seeder
 {
     /**
@@ -12,29 +13,21 @@ class CategoryTableSeeder extends Seeder
      */
     public function run()
     {
-      $categories = [
-        [
-          'name' => 'Sport',
-          'slug'  => 'sport'
-        ],
-        [
-          'name' => 'Informatica',
-          'slug'=> 'informatica',
-        ],
-        [
-          'name' => 'Storia',
-          'slug'=> 'storia'
-        ],
-        [
-          'name' => 'Arte',
-          'slug' => 'arte'
-        ]
-      ];
 
-      foreach ($categories as $category) {
-        $new_category = new Category();
-        $new_category->fill($category);
-        $new_category->save();
-      }
+        $new_category_1 = new Category();
+        $new_category_1->name = 'Sport';
+        $new_category_1->slug = Str::slug($new_category_1->name);
+        $new_category_1->save();
+
+        $new_category_2 = new Category();
+        $new_category_2->name = 'Informatica';
+        $new_category_2->slug = Str::slug($new_category_2->name);
+        $new_category_2->save();
+
+        $new_category_3 = new Category();
+        $new_category_3->name = 'Arte';
+        $new_category_3->slug = Str::slug($new_category_3->name);
+        $new_category_3->save();
+
     }
 }
