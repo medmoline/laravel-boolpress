@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 //per includere i faker all'interno del seed
 use Faker\Factory as Faker;
-//includo la classe Post
+//includo la classe Post 
 use App\Post;
 use Illuminate\Support\Str;
 class PostsTableSeeder extends Seeder

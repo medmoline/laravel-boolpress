@@ -19,6 +19,19 @@
            @endif
           </a>
        </em>
+       <em>
+         {{-- if per controllare se la collection è vuota tramite il metodo isNotEmpty --}}
+         @if (($post->tags)->isNotEmpty())
+           - TAG:
+           {{-- foreach per ciclare la collection e ottenere i risultati --}}
+           @foreach ($post->tags as $tag)
+            <a href="#">
+              {{$tag->name}} @if (! $loop->last), @endif {{-- If nel caso in cui fosse l'ultimo elemento togli la virogla  --}}
+            </a>
+           @endforeach
+          @endif
+       </em>
+
     </li>
     {{-- @php
       dd($post->category->slug)

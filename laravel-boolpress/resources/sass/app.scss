@@ -3,6 +3,10 @@
 
 // Variables
 @import 'variables';
+@import 'partials/layouts/_navbar';
+@import 'partials/layouts/_footer';
+@import 'partials/posts/_index';
+
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
