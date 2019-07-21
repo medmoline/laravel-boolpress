@@ -66,23 +66,49 @@ class PostController extends Controller
 
 
     public function edit($id)
-    {
+    {   $tags = Tag::all();
+      $categories = Category::all();
         $post = Post::find($id);
         if(empty($post)) {
           abort(404);
         }
-        return view('admin.posts.edit')->with(['post' => $post]);
+        return view('admin.posts.edit')->with([
+          'post' => $post,
+          'categories' => $categories,
+          'tags' => $tags
+        ]);
     }
 
 
     public function update(Request $request, $id)
     {
-        //
+      $validateData = $request->validate([
+        'title'=> 'required|unique:posts|max:255',
+        'content'=> 'required',
+        'author'=> 'required',
+        'category_id' => 'required'
+    ]);
+
+     $dati = $request->all();
+      $post = Post::find($id);
+      $dati['slug'] = Str::slug($dati['title']);
+      $category = Category::find($dati['category_id']);
+      if(empty($category)){
+        //se la categoria è vuota ossia non ha nessun riscontro all'interno della tabella allora la levo dal fillable
+        unset($dati['category_id']);
+      }
+       $post->update($dati);
+       $post->tags()->sync($dati['tag_ids']);
+        return redirect()->route('admin.posts.index');
+
     }
 
 
     public function destroy($id)
     {
-        //
+        $post = Post::find($id);
+        $post->delete();
+        return redirect()->route('admin.posts.index');
+
     }
 }

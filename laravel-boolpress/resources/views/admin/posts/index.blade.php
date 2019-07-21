@@ -41,7 +41,11 @@
                 <td class="link_posts">
                   <a class="btn btn-primary" href="{{route('admin.posts.show', $post->id) }}">Vedi</a>
                   <a class="btn btn-primary" href="{{route('admin.posts.edit', $post->id) }}">Modifica</a>
-                  <a class="btn btn-primary" href="#">Cancella</a>
+                  <form action="{{ route('admin.posts.destroy', $post->id) }}" method="post" class="destroy-form">
+                  @method('DELETE')
+                  @csrf
+                  <input type="submit" class="btn btn-primary" value="Cancella">
+                </form>
                 </td>
               @empty
             </tbody>
