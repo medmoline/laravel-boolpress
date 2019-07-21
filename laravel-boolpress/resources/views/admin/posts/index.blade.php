@@ -26,7 +26,9 @@
                 <td>{{$post->id}}</td>
                 <td>{{$post->title}}</td>
                 <td>{{$post->author}}</td>
-                <td>{{$post->category->name}}</td>
+                <td>
+                  {{ !empty($post->category) ? $post->category->name : '-' }}
+                </td>
                 <td>
                   @if ( ($post->tags)->isNotEmpty())
                     @foreach ($post->tags as $tag)
@@ -37,8 +39,8 @@
                   @endif
                 </td>
                 <td class="link_posts">
-                  <a class="btn btn-primary" href="#">Vedi</a>
-                  <a class="btn btn-primary" href="#">Modifica</a>
+                  <a class="btn btn-primary" href="{{route('admin.posts.show', $post->id) }}">Vedi</a>
+                  <a class="btn btn-primary" href="{{route('admin.posts.edit', $post->id) }}">Modifica</a>
                   <a class="btn btn-primary" href="#">Cancella</a>
                 </td>
               @empty

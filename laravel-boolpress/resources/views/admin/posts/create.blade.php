@@ -18,10 +18,6 @@
             <input class="form-control" type="text" name="author" value="{{old('author')}} " placeholder="Inserisci nuovo autore">
           </div>
           <div class="form-group">
-            <label for="slug">Slug:</label>
-            <input class="form-control" type="text" name="slug" value="{{old('slug')}} " placeholder="Inserisci nuovo slug">
-          </div>
-          <div class="form-group">
             <select class="form-control" name="category_id">
               <option>Selezionare la categoria</option>
               @foreach ($categories as $category)
@@ -30,9 +26,9 @@
             </select>
           </div>
           <div class="form-group">
+            <label>TAG: </label>
             @foreach ($tags as $tag)
-              <label for="{{$tag->name}}">{{$tag->name}}</label>
-              <input type="checkbox" name="{{$tag->name}}" value="{{$tag->name}} ">
+              <label> <input type="checkbox" name="tag_ids[]" value="{{$tag->id}}">{{$tag->name}} </label>
             @endforeach
           </div>
           <div class="form-group">
